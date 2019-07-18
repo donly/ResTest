@@ -95,7 +95,7 @@ extension CPMapTemplate {
             cpManeuver.instructionVariants = [maneuver.instructions]
             
             if let image = UIImage(named: maneuver.imageName, in: .main, compatibleWith: traitCollection) {
-                cpManeuver.symbolSet = CPImageSet(lightContentImage: image, darkContentImage: image)
+                cpManeuver.symbolImage = image
             }
             
             return cpManeuver

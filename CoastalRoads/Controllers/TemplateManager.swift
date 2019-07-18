@@ -76,7 +76,7 @@ class TemplateManager: NSObject, CPInterfaceControllerDelegate, CPListTemplateDe
         let mapViewController = MapViewController(nibName: nil, bundle: nil)
         mapViewController.mapViewActionProvider = self
 
-        window.rootViewController = UINavigationController(rootViewController: mapViewController)
+        window.rootViewController = mapViewController
 
         carWindow = window
         carViewController = mapViewController
