@@ -33,12 +33,12 @@ You're also responsible for adding and removing the root view controller of your
 The following code shows an example implementation of setting a root template:
 
 ``` swift
-let mapTemplate = CPMapTemplate.coastalRoadsMapTemplate(compatibleWith: traitCollection, zoomInAction: {
+let mapTemplate = CPMapTemplate.coastalRoadsMapTemplate(compatibleWith: mapViewController.traitCollection, zoomInAction: {
     MemoryLogger.shared.appendEvent("Map zoom in.")
-    mapViewController.zoomIn()
+    self.mapViewController.zoomIn()
 }, zoomOutAction: {
     MemoryLogger.shared.appendEvent("Map zoom out.")
-    mapViewController.zoomOut()
+    self.mapViewController.zoomOut()
 })
 
 mapTemplate.mapDelegate = self
