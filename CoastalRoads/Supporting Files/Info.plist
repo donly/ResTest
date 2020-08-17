@@ -26,17 +26,15 @@
 		<true/>
 		<key>UISceneConfigurations</key>
 		<dict>
-			<key>UIWindowSceneSessionRoleApplication</key>
+			<key>CPTemplateApplicationDashboardSceneSessionRoleApplication</key>
 			<array>
 				<dict>
 					<key>UISceneClassName</key>
-					<string>UIWindowScene</string>
+					<string>CPTemplateApplicationDashboardScene</string>
 					<key>UISceneConfigurationName</key>
-					<string>LoggerSceneConfiguration</string>
+					<string>DashboardSceneConfiguration</string>
 					<key>UISceneDelegateClassName</key>
-					<string>CoastalRoads.LoggerWindowSceneDelegate</string>
-					<key>UISceneStoryboardFile</key>
-					<string>Launch Screen</string>
+					<string>ResTest.TemplateApplicationSceneDelegate</string>
 				</dict>
 			</array>
 			<key>CPTemplateApplicationSceneSessionRoleApplication</key>
@@ -47,18 +45,20 @@
 					<key>UISceneConfigurationName</key>
 					<string>TemplateSceneConfiguration</string>
 					<key>UISceneDelegateClassName</key>
-					<string>CoastalRoads.TemplateApplicationSceneDelegate</string>
+					<string>ResTest.TemplateApplicationSceneDelegate</string>
 				</dict>
 			</array>
-			<key>CPTemplateApplicationDashboardSceneSessionRoleApplication</key>
+			<key>UIWindowSceneSessionRoleApplication</key>
 			<array>
 				<dict>
 					<key>UISceneClassName</key>
-					<string>CPTemplateApplicationDashboardScene</string>
+					<string>UIWindowScene</string>
 					<key>UISceneConfigurationName</key>
-					<string>DashboardSceneConfiguration</string>
+					<string>LoggerSceneConfiguration</string>
 					<key>UISceneDelegateClassName</key>
-					<string>CoastalRoads.TemplateApplicationSceneDelegate</string>
+					<string>ResTest.LoggerWindowSceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Launch Screen</string>
 				</dict>
 			</array>
 		</dict>

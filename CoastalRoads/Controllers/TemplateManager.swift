@@ -10,6 +10,10 @@ import Foundation
 import os
 
 class TemplateManager: NSObject, CPInterfaceControllerDelegate, CPListTemplateDelegate, CPSessionConfigurationDelegate {
+//  func listTemplate(_ listTemplate: CPListTemplate, didSelect item: CPBaseListItem, completionHandler: @escaping () -> Void) {
+//    print("listTemplate, didSelect")
+//  }
+  
 
     private var carplayInterfaceController: CPInterfaceController?
     private var carWindow: UIWindow?
@@ -99,10 +103,9 @@ class TemplateManager: NSObject, CPInterfaceControllerDelegate, CPListTemplateDe
 
     func interfaceController(_ interfaceController: CPInterfaceController, didConnectWith window: CPWindow) {
         MemoryLogger.shared.appendEvent("Connected to CarPlay window.")
-
         interfaceController.delegate = self
         carplayInterfaceController = interfaceController
-
+      mapViewController.cpWindow = window
         window.rootViewController = mapViewController
 
         carWindow = window
@@ -120,9 +123,9 @@ class TemplateManager: NSObject, CPInterfaceControllerDelegate, CPListTemplateDe
 
         baseMapTemplate = mapTemplate
 
-        installBarButtons()
+//        installBarButtons()
 
-        interfaceController.setRootTemplate(mapTemplate, animated: true)
+//        interfaceController.setRootTemplate(mapTemplate, animated: true)
     }
 
     func interfaceController(_ interfaceController: CPInterfaceController, didDisconnectWith window: CPWindow) {

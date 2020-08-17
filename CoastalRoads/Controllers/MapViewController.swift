@@ -21,29 +21,57 @@ protocol MapViewActionProviding {
  `MapViewController` is the root view controller for the car screen. It hosts an instance of `MapScrollView`.
  */
 class MapViewController: UIViewController {
-
+  var cpWindow: CPWindow?
     var mapView: MapScrollView!
     var mapViewActionProvider: MapViewActionProviding?
-
+  var contentLabel: UILabel!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let mapImage = UIImage(named: "Map", in: .main, compatibleWith: traitCollection) else { fatalError("No map image found") }
+      self.view.backgroundColor = UIColor.blue
+//        guard let mapImage = UIImage(named: "Map", in: .main, compatibleWith: traitCollection) else { fatalError("No map image found") }
 
         /// - Tag: did_layout
         // Add the map as the base view for the CarPlay screen.
         // Only add 1 view and it should cover the entire screen.
-        mapView = MapScrollView(frame: view.bounds, image: mapImage)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(mapView)
-        
-        mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-
-        setPolylineVisible(false)
-        mapView.zoomToLocation(.routeOverview)
+//        mapView = MapScrollView(frame: view.bounds, image: mapImage)
+//        mapView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(mapView)
+//
+//        mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+//        mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//
+//        setPolylineVisible(false)
+//        mapView.zoomToLocation(.routeOverview)
+      
+      contentLabel = UILabel(frame: view.bounds)
+      contentLabel.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(contentLabel)
+      
+      contentLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+      contentLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+      contentLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+      contentLabel.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+      
+      contentLabel.backgroundColor = UIColor.gray
+      contentLabel.numberOfLines = 0
+      contentLabel.textAlignment = .center
+      
+      guard let window = cpWindow else { return }
+      
+      var text = ""
+      if let mode = window.screen.currentMode {
+        text = "Screen Resolution is:\n\(mode.size)\nContent Size is:\n\(UIScreen.main.bounds.size)\n\n"
+      }
+      
+      text.append("Available Resolution is:\n")
+      for mode in window.screen.availableModes {
+        text += "\(mode.size)\n"
+      }
+      
+      contentLabel.text = text
     }
 
     /// Coastal Roads navigates with a single pre-determined polyline that indicates the route.
